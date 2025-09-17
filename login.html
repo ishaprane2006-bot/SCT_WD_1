@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .show-password {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .show-password input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        #errorMsg {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <div class="show-password">
+        <input type="checkbox" id="showPassword">
+        <label for="showPassword">Show Password</label>
+    </div>
+    <button onclick="login()">Login</button>
+    <p id="errorMsg">Invalid credentials!</p>
+</div>
+
+<script>
+    const passwordField = document.getElementById('password');
+    const showPasswordCheckbox = document.getElementById('showPassword');
+
+    showPasswordCheckbox.addEventListener('change', function() {
+        passwordField.type = this.checked ? 'text' : 'password';
+    });
+
+    function login() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Example credentials
+        if(username === "admin" && password === "1234") {
+            // Redirect to home page
+            window.location.href = "home.html";
+        } else {
+            document.getElementById('errorMsg').style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>
